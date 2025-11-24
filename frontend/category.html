@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Categoría - Avengers Toys</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">Avengers Toys</div>
+      <nav class="nav">
+        <a href="/app">Inicio</a>
+      </nav>
+      <div class="header-actions">
+        <a class="cart" href="/app/cart" title="Ver carrito" aria-label="Carrito">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="1.6">
+              <path d="M3 4h2l2.4 10.5a1.6 1.6 0 0 0 1.6 1.2h8.2a1 1 0 0 0 .95-.68l1.6-5.1H6.4" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="9" cy="19" r="1.4" />
+              <circle cx="18" cy="19" r="1.4" />
+          </svg>
+          <span class="cart-count" aria-hidden="true"></span>
+        </a>
+        <a class="btn-login" href="/app/login">Ingresar</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="category-page">
+        <h2 id="category-title">Categoría</h2>
+        <div id="category-products" class="grid-cards"></div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="brand-circle">A</div>
+            <h3>Avengers Toys</h3>
+            <p>Descubre la mayor colección de juguetes de Marvel y los Avengers.</p>
+          </div>
+
+          <div class="footer-links">
+            <h4>Enlaces Rápidos</h4>
+            <ul>
+              <li><a href="/app">Inicio</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-help">
+            <h4>Ayuda</h4>
+            <ul>
+              <li><a href="#">Centro de Ayuda</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>© 2024 Avengers Toys. Todos los derechos reservados.</div>
+        </div>
+      </footer>
+    </main>
+
+    <script src="/static/category.js"></script>
+    <!-- Login modal -->
+    <div id="login-backdrop" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+        <h3 id="login-title">Iniciar sesión</h3>
+        <div class="field">
+          <label for="login-name">Usuario</label>
+          <input id="login-name" type="text" placeholder="usuario" />
+        </div>
+        <div class="field">
+          <label for="login-pass">Contraseña</label>
+          <input id="login-pass" type="password" placeholder="Contraseña" />
+        </div>
+        <div class="actions">
+          <button id="login-cancel" class="btn btn-ghost">Cancelar</button>
+          <button id="login-submit" class="btn btn-primary">Ingresar</button>
+        </div>
+        <div class="demo-cred" style="font-size:13px;color:var(--muted);margin-top:8px">Credenciales demo: <strong>admin</strong> / <strong>123456</strong> (administrador) — <strong>user</strong> / <strong>123456</strong> (usuario)</div>
+      </div>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

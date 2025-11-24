@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Carrito - Avengers Toys</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section style="max-width:900px;margin:40px auto;">
+        <div style="display:flex;gap:18px;align-items:flex-start;">
+          <div style="flex:1;background:var(--card);padding:18px;border-radius:12px;">
+            <h2>Tu carrito</h2>
+            <div id="cart-list" class="cart-list"></div>
+            <div id="cart-empty" class="empty-cart" style="display:none">
+              <div style="font-size:18px;color:var(--muted)">Tu carrito está vacío</div>
+              <p style="color:var(--muted)">¡Comienza a agregar algunos héroes increíbles a tu colección!</p>
+              <a class="continue" href="/app">← Continuar comprando</a>
+            </div>
+          </div>
+          <aside style="width:320px;background:var(--card);padding:18px;border-radius:12px;">
+            <h3>Resumen</h3>
+            <div class="cart-summary">
+              <div>Total</div>
+              <div id="cart-total">$ 0</div>
+            </div>
+            <div style="margin-top:14px;display:flex;gap:10px;flex-direction:column">
+              <button id="checkout" class="btn btn-primary">Pagar</button>
+              <a id="clear-cart" class="btn btn-ghost" href="#">Vaciar carrito</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <!-- Login modal -->
+    <div id="login-backdrop" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+        <h3 id="login-title">Iniciar sesión</h3>
+        <div class="field">
+          <label for="login-name">Usuario</label>
+          <input id="login-name" type="text" placeholder="usuario" />
+        </div>
+        <div class="field">
+          <label for="login-pass">Contraseña</label>
+          <input id="login-pass" type="password" placeholder="Contraseña" />
+        </div>
+        <div class="actions">
+          <button id="login-cancel" class="btn btn-ghost">Cancelar</button>
+          <button id="login-submit" class="btn btn-primary">Ingresar</button>
+        </div>
+        <div class="demo-cred" style="font-size:13px;color:var(--muted);margin-top:8px">Credenciales demo: <strong>admin</strong> / <strong>123456</strong> (administrador) — <strong>user</strong> / <strong>123456</strong> (usuario)</div>
+      </div>
+    </div>
+
+    <script src="/static/cart.js"></script>
+  </body>
+</html>

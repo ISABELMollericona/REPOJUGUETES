@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin - Avengers Toys</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">Avengers Toys — Admin</div>
+      <nav class="nav"><a href="/app">Inicio</a></nav>
+      <div class="header-actions">
+        <a class="cart" href="/app/cart" title="Ver carrito" aria-label="Carrito">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="1.6">
+            <path d="M3 4h2l2.4 10.5a1.6 1.6 0 0 0 1.6 1.2h8.2a1 1 0 0 0 .95-.68l1.6-5.1H6.4" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="9" cy="19" r="1.4" />
+            <circle cx="18" cy="19" r="1.4" />
+          </svg>
+          <span class="cart-count" aria-hidden="true"></span>
+        </a>
+      </div>
+    </header>
+
+    <main class="container">
+      <section style="margin-top:28px;">
+        <h2>Panel Admin — Productos</h2>
+
+        <div style="display:flex;gap:18px;align-items:flex-start;">
+          <div style="flex:1">
+            <h3>Productos</h3>
+            <div style="display:flex;gap:8px;margin-bottom:12px">
+              <button id="open-create" class="btn btn-primary">Crear producto</button>
+              <button id="btn-refresh" class="btn btn-ghost">Refrescar lista</button>
+            </div>
+            <div id="admin-products" style="display:grid;gap:10px"></div>
+          </div>
+
+          
+        <!-- Create modal -->
+        <div id="modal-create" class="modal-backdrop" aria-hidden="true" style="display:none">
+          <div class="modal" role="dialog" aria-modal="true">
+            <h3>Crear producto</h3>
+            <div class="field"><label>Nombre</label><input id="m-p-name" /></div>
+            <div class="field"><label>Descripción</label><input id="m-p-desc" /></div>
+            <div class="field"><label>Precio</label><input id="m-p-price" type="number" /></div>
+            <div class="field"><label>Imagen (URL)</label><input id="m-p-image" /></div>
+            <div class="field"><label>Categoría</label><select id="m-p-category"></select></div>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <button id="m-create-cancel" class="btn btn-ghost">Cancelar</button>
+              <button id="m-create-submit" class="btn btn-primary">Crear</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit modal -->
+        <div id="modal-edit" class="modal-backdrop" aria-hidden="true" style="display:none">
+          <div class="modal" role="dialog" aria-modal="true">
+            <h3>Editar producto</h3>
+            <input type="hidden" id="e-p-id" />
+            <div class="field"><label>Nombre</label><input id="e-p-name" /></div>
+            <div class="field"><label>Descripción</label><input id="e-p-desc" /></div>
+            <div class="field"><label>Precio</label><input id="e-p-price" type="number" /></div>
+            <div class="field"><label>Imagen (URL)</label><input id="e-p-image" /></div>
+            <div class="field"><label>Categoría</label><select id="e-p-category"></select></div>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <button id="m-edit-cancel" class="btn btn-ghost">Cancelar</button>
+              <button id="m-edit-submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delete confirmation modal -->
+        <div id="modal-delete" class="modal-backdrop" aria-hidden="true" style="display:none">
+          <div class="modal" role="dialog" aria-modal="true">
+            <h3>Eliminar producto</h3>
+            <p id="d-p-msg">¿Deseas eliminar este producto?</p>
+            <input type="hidden" id="d-p-id" />
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <button id="m-delete-cancel" class="btn btn-ghost">Cancelar</button>
+              <button id="m-delete-submit" class="btn btn-danger">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- login modal -->
+    <div id="login-backdrop" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+        <h3 id="login-title">Iniciar sesión (Admin)</h3>
+        <div class="field">
+          <label for="login-name">Usuario</label>
+          <input id="login-name" type="text" placeholder="usuario" />
+        </div>
+        <div class="field">
+          <label for="login-pass">Contraseña</label>
+          <input id="login-pass" type="password" placeholder="Contraseña" />
+        </div>
+        <div class="field">
+          <label for="login-id">ID de usuario (para demo)</label>
+          <input id="login-id" type="text" placeholder="id numérico o uuid" />
+        </div>
+        <div class="actions">
+          <button id="login-cancel" class="btn btn-ghost">Cancelar</button>
+          <button id="login-submit" class="btn btn-primary">Ingresar</button>
+        </div>
+        <div class="demo-cred" style="font-size:13px;color:var(--muted);margin-top:8px">Credenciales demo: <strong>admin</strong> / <strong>123456</strong> (administrador) — <strong>user</strong> / <strong>123456</strong> (usuario)</div>
+      </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+    <script src="/static/admin.js"></script>
+  </body>
+</html>

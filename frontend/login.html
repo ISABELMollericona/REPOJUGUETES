@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login - Avengers Toys</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section style="max-width:480px;margin:60px auto;background:var(--card);padding:24px;border-radius:10px;">
+        <h2>Ingresar</h2>
+        <form id="login-form">
+          <label>Usuario</label>
+          <input type="text" id="username" placeholder="usuario" style="width:100%;padding:10px;margin:8px 0;border-radius:6px;border:1px solid rgba(255,255,255,0.06)" />
+          <label>Contraseña</label>
+          <input type="password" id="password" style="width:100%;padding:10px;margin:8px 0;border-radius:6px;border:1px solid rgba(255,255,255,0.06)" />
+          <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
+            <a class="btn-login" href="/app">Cancelar</a>
+            <button type="submit" class="btn-login" style="background:var(--accent);border:none;color:#fff;padding:8px 14px;border-radius:6px;">Ingresar</button>
+          </div>
+          <div style="font-size:13px;color:var(--muted);margin-top:10px">Credenciales demo: <strong>admin</strong> / <strong>123456</strong> — <strong>user</strong> / <strong>123456</strong></div>
+        </form>
+      </section>
+    </main>
+    <script>
+      document.getElementById('login-form').addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const username = document.getElementById('username')?.value||'';
+        const password = document.getElementById('password')?.value||'';
+        if(!username || !password){ alert('Introduce usuario y contraseña'); return; }
+        try{
+          const res = await fetch('/auth/login', {
+            method: 'POST', headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({username, pass: password})
+          });
+          if(!res.ok){ const body = await res.text(); console.error('Login failed', res.status, body); alert('Credenciales inválidas'); return; }
+          const user = await res.json();
+          // Guardar sesión en localStorage
+          localStorage.setItem('user', JSON.stringify(user));
+          // Redirigir según rol (admin → panel admin)
+          if(user && user.role === 'admin'){
+            window.location.href = '/app/admin';
+          } else {
+            window.location.href = '/app';
+          }
+        }catch(err){ console.error('Login error', err); alert('Error de conexión'); }
+      });
+    </script>
+  </body>
+</html>
